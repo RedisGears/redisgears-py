@@ -1,5 +1,5 @@
 # redisgears-py
-[RedisGears](http://redisgears.io) python client
+[RedisGears](http://redisgears.io) python client (support python3 only!)
 
 ## Example: Using the Python Client:
 ```python
@@ -27,3 +27,4 @@ for r in res[0]:
 ```
 pip install git+https://github.com/RedisGears/redisgears-py.git
 ```
+Notice that the library also need to be installed in RedisGears virtual env.
