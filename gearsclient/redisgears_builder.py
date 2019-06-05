@@ -10,6 +10,14 @@ class GearsRemoteMapStep():
         self.callback.__globals__.update(globalsDict)
         gb.map(self.callback)
 
+class GearsRemoteForeachStep():
+    def __init__(self, callback):
+        self.callback = callback
+
+    def AddToGB(self, gb, globalsDict):
+        self.callback.__globals__.update(globalsDict)
+        gb.foreach(self.callback)
+
 class GearsRemoteFlatMapStep():
     def __init__(self, callback):
         self.callback = callback
@@ -103,6 +111,13 @@ class GearsRemoteRunStep():
     def AddToGB(self, gb, globalsDict):
         gb.run(self.arg, self.convertToStr, self.collect)
 
+class GearsRemoteRegisterStep():
+    def __init__(self, arg):
+        self.arg = arg
+
+    def AddToGB(self, gb, globalsDict):
+        gb.register(self.arg) if self.arg else gb.register()
+
 
 class GearsPipe():
     def __init__(self, reader='KeysReader', defaultArg='*'):
@@ -112,6 +127,10 @@ class GearsPipe():
 
     def map(self, callback):
         self.steps.append(GearsRemoteMapStep(callback))
+        return self
+
+    def foreach(self, callback):
+        self.steps.append(GearsRemoteForeachStep(callback))
         return self
 
     def flatmap(self, callback):
@@ -157,6 +176,9 @@ class GearsPipe():
     def run(self, arg, convertToStr, collect):
         self.steps.append(GearsRemoteRunStep(arg, convertToStr, collect))
 
+    def register(self, arg):
+        self.steps.append(GearsRemoteRegisterStep(arg))
+
 
 class GearsRemoteBuilder():
     def __init__(self, reader='KeysReader', defaultArg='*', r=None):
@@ -167,6 +189,10 @@ class GearsRemoteBuilder():
 
     def map(self, callback):
         self.pipe.map(callback)
+        return self
+
+    def foreach(self, callback):
+        self.pipe.foreach(callback)
         return self
 
     def flatmap(self, callback):
@@ -216,3 +242,9 @@ class GearsRemoteBuilder():
         res, errs = results
         res = [cloudpickle.loads(record) for record in res]
         return res, errs
+
+    def register(self, arg=None):
+        self.pipe.register(arg)
+        selfBytes = cloudpickle.dumps(self.pipe)
+        res = self.r.execute_command('RG.PYEXECUTEREMOTE', selfBytes)
+        return res
