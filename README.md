@@ -2,7 +2,7 @@
 [RedisGears](http://redisgears.io) python client
 
 ## Example: Using the Python Client:
-```
+```python
 from gearsclient import GearsRemoteBuilder as GRB
 import redis
 
