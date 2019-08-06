@@ -3,14 +3,14 @@
 
 ## Example: Using the Python Client:
 ```python
-from gearsclient import GearsRemoteBuilder as GRB
+from gearsclient import GearsRemoteBuilder as GearsBuilder
 import redis
 
 conn = redis.Redis(host='localhost', port=6379)
 
 # count for each genre how many times it appears
 
-res = GRB('KeysOnlyReader', r=conn).\
+res = GearsBuilder('KeysOnlyReader', r=conn).\
 	  map(lambda x:execute('hget', x, 'genres')).\
 	  filter(lambda x:x != '\\N').\
 	  flatmap(lambda x: x.split(',')).\
