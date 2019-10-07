@@ -1,3 +1,10 @@
+[![license](https://img.shields.io/github/license/RedisGears/redisgears-py.svg)](https://github.com/RedisGears/redisgears-py)
+[![PyPI version](https://badge.fury.io/py/redisgears-py.svg)](https://badge.fury.io/py/redisgears-py)
+[![CircleCI](https://circleci.com/gh/RedisGears/redisgears-py/tree/master.svg?style=svg)](https://circleci.com/gh/RedisGears/redisgears-py/tree/master)
+[![GitHub issues](https://img.shields.io/github/release/RedisGears/redisgears-py.svg)](https://github.com/RedisGears/redisgears-py/releases/latest)
+[![Codecov](https://codecov.io/gh/RedisGears/redisgears-py/branch/master/graph/badge.svg)](https://codecov.io/gh/RedisGears/redisgears-py)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/RedisGears/redisgears-py.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/RedisGears/redisgears-py/context:python)
+
 # redisgears-py
 [RedisGears](http://redisgears.io) python client (support python3 only!)
 
