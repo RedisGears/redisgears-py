@@ -220,7 +220,7 @@ class GearsRemoteBuilder():
         return self
 
     def aggregate(self, zero, seqOp, combOp):
-        self.pipe.countby(callback)
+        self.pipe.aggregate(zero, seqOp, combOp)
         return self
 
     def aggregateby(self, extractor, zero, seqOp, combOp):
