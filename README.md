@@ -6,6 +6,8 @@
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/RedisGears/redisgears-py.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/RedisGears/redisgears-py/context:python)
 
 # redisgears-py
+[![Forum](https://img.shields.io/badge/Forum-RedisGears-blue)](https://forum.redislabs.com/c/modules/redisgears)
+
 [RedisGears](http://redisgears.io) python client (support python3 only!)
 
 ## Example: Using the Python Client:
