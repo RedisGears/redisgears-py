@@ -2,6 +2,21 @@ import redis
 import cloudpickle
 import pickle
 
+class GearsRemoteLocalGroupByStep():
+    def __init__(self, extractor, reducer):
+        self.extractor = extractor
+        self.reducer = reducer
+
+    def AddToGB(self, gb):
+        gb.localgroupby(self.extractor, self.reducer)
+
+class GearsRemoteAccumulateStep():
+    def __init__(self, accumulator):
+        self.accumulator = accumulator
+
+    def AddToGB(self, gb):
+        gb.accumulate(self.accumulator)
+
 class GearsRemoteRepartitionStep():
     def __init__(self, extractor):
         self.extractor = extractor
@@ -126,6 +141,14 @@ class GearsPipe():
         self.defaultArg = defaultArg
         self.steps = []
 
+    def localgroupby(self, extractor, reducer):
+        self.steps.append(GearsRemoteLocalGroupByStep(extractor, reducer))
+        return self
+
+    def accumulate(self, accumulator):
+        self.steps.append(GearsRemoteAccumulateStep(accumulator))
+        return self
+
     def repartition(self, extractor):
         self.steps.append(GearsRemoteRepartitionStep(extractor))
         return self
@@ -197,6 +220,14 @@ class GearsRemoteBuilder():
             r = redis.Redis()
         self.r = r
         self.pipe = GearsPipe(reader, defaultArg)
+
+    def localgroupby(self, extractor, reducer):
+        self.pipe.localgroupby(extractor, reducer)
+        return self
+
+    def accumulate(self, accumulator):
+        self.pipe.accumulate(accumulator)
+        return self
 
     def repartition(self, extractor):
         self.pipe.repartition(extractor)
