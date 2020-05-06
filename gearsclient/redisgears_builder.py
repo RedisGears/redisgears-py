@@ -325,8 +325,8 @@ def hashtag():
 
 class atomic:
     def __init__(self):
-        from redisgears import atomicCtx as redisAomic
-        self.atomic = redisAomic()
+        from redisgears import atomicCtx as redisAtomic
+        self.atomic = redisAtomic()
         pass
 
     def __enter__(self):
