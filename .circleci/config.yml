@@ -53,7 +53,9 @@ jobs:
 
       - run:
           name: test example
-          command: python example.py
+          command: |
+            . venv/bin/activate
+            python example.py
 
 #      - run:
 #          name: run tests
