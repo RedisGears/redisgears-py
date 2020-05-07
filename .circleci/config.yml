@@ -52,18 +52,22 @@ jobs:
           command: python setup.py sdist
 
       - run:
-          name: run tests
-          command: |
-            . venv/bin/activate
-            coverage run test.py
+          name: test example
+          command: python example.py
+
+#      - run:
+#          name: run tests
+#          command: |
+#            . venv/bin/activate
+#            coverage run test.py
 
       - early_return_for_forked_pull_requests
 
-      - run:
-          name: codecove
-          command: |
-            . venv/bin/activate
-            codecov
+#      - run:
+#          name: codecove
+#          command: |
+#            . venv/bin/activate
+#            codecov
 
    #   - store_artifacts:
    #       path: test-reports
