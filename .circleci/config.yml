@@ -10,7 +10,7 @@ jobs:
     steps:
       - run:
           name: installations
-          command: apt-get -qq update; apt-get install -y mysql-server ca-certificates wget build-essential git python-pip
+          command: apt-get -qq update; apt-get install -y ca-certificates wget build-essential git python-pip
       - run:
           name: Redis_5_upgrade
           command: cd ..; git clone https://github.com/antirez/redis.git; cd ./redis; git fetch; git checkout 6.0.1; make; make install
