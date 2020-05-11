@@ -59,7 +59,7 @@ class GearsRemoteCountByStep():
     def AddToGB(self, gb):
         gb.countby(self.callback)
 
-class GearsRemoteAvgByStep():
+class GearsRemoteAvgStep():
     def __init__(self, callback):
         self.callback = callback
 
@@ -68,14 +68,14 @@ class GearsRemoteAvgByStep():
 
 class GearsRemoteCountStep():
     def __init__(self):
-        self.callback = callback
+        pass
 
     def AddToGB(self, gb):
         gb.count()
 
 class GearsRemoteDistinctStep():
     def __init__(self):
-        self.callback = callback
+        pass
 
     def AddToGB(self, gb):
         gb.distinct()
@@ -97,7 +97,7 @@ class GearsRemoteAggregateByStep():
         self.combOp = combOp
 
     def AddToGB(self, gb):
-        gb.aggregate(self.extractor, self.zero, self.seqOp, self.combOp)
+        gb.aggregateby(self.extractor, self.zero, self.seqOp, self.combOp)
 
 class GearsRemoteSortStep():
     def __init__(self, reverse):
@@ -215,11 +215,16 @@ class GearsPipe():
 
 
 class GearsRemoteBuilder():
-    def __init__(self, reader='KeysReader', defaultArg='*', r=None):
+    def __init__(self, reader='KeysReader', defaultArg='*', r=None, requirements=[], addClientToRequirements=True):
         if r is None:
             r = redis.Redis()
         self.r = r
         self.pipe = GearsPipe(reader, defaultArg)
+        self.requirements = requirements
+        if addClientToRequirements:
+            self.requirements += ['git+https://github.com/RedisGears/redisgears-py.git']
+        if len(self.requirements) > 0:
+            self.requirements = ['REQUIREMENTS'] + self.requirements
 
     def localgroupby(self, extractor, reducer):
         self.pipe.localgroupby(extractor, reducer)
@@ -290,7 +295,7 @@ import cloudpickle
 p = cloudpickle.loads(%s)
 p.createAndRun(GB)
         ''' % selfBytes
-        results = self.r.execute_command('RG.PYEXECUTE', serverCode)
+        results = self.r.execute_command('RG.PYEXECUTE', serverCode, *self.requirements)
         res, errs = results
         res = [cloudpickle.loads(record) for record in res]
         return res, errs
@@ -303,7 +308,7 @@ import cloudpickle
 p = cloudpickle.loads(%s)
 p.createAndRun(GB)
         ''' % selfBytes
-        res = self.r.execute_command('RG.PYEXECUTE', serverCode)
+        res = self.r.execute_command('RG.PYEXECUTE', serverCode, *self.requirements)
         return res
 
 def log(msg, level='notice'):
