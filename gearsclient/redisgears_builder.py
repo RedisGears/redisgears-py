@@ -222,7 +222,7 @@ class GearsRemoteBuilder():
         self.pipe = GearsPipe(reader, defaultArg)
         self.requirements = requirements
         if addClientToRequirements:
-            self.requirements += ['git+https://github.com/RedisGears/redisgears-py.git']
+            self.requirements += ['redisgears-py==1.0.0']
         if len(self.requirements) > 0:
             self.requirements = ['REQUIREMENTS'] + self.requirements
 
