@@ -13,6 +13,7 @@
 ## Example: Using the Python Client:
 ```python
 from gearsclient import GearsRemoteBuilder as GearsBuilder
+from gearsclient import execute
 import redis
 
 conn = redis.Redis(host='localhost', port=6379)
