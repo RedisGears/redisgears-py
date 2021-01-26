@@ -13,7 +13,7 @@ jobs:
           command: apt-get -qq update; apt-get install -y ca-certificates wget build-essential git python-pip
       - run:
           name: Redis_5_upgrade
-          command: cd ..; git clone https://github.com/antirez/redis.git; cd ./redis; git fetch; git checkout 6.0.1; make; make install
+          command: cd ..; git clone https://github.com/antirez/redis.git; cd ./redis; git fetch; git checkout 6.0.9; make; make install
       - run:
           name: download_RedisGears
           command: cd ..; wget http://redismodules.s3.amazonaws.com/redisgears/snapshots/redisgears.linux-bionic-x64.master.zip; apt-get install -y unzip; unzip redisgears.linux-bionic-x64.master.zip
@@ -29,7 +29,7 @@ jobs:
           command: /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m pip install git+https://github.com/Grokzen/redis-py-cluster.git@master git+https://github.com/RedisLabsModules/RLTest.git
       - run:
           name: run_tests
-          command: /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m RLTest --module ../redisgears.so --module-args "Plugin /var/opt/redislabs/modules/rg/gears_python/gears_python.so"
+          command: /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m RLTest --module ../redisgears.so --module-args "Plugin /var/opt/redislabs/modules/rg/plugin/gears_python.so"
 
 workflows:
   version: 2
