@@ -29,7 +29,7 @@ jobs:
           command: /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m pip install git+https://github.com/Grokzen/redis-py-cluster.git@master git+https://github.com/RedisLabsModules/RLTest.git
       - run:
           name: run_tests
-          command: /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m RLTest --module ../redisgears.so
+          command: /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m RLTest --module ../redisgears.so --module-args "Plugin /var/opt/redislabs/modules/rg/gears_python/gears_python.so"
 
 workflows:
   version: 2
