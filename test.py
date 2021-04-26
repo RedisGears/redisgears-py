@@ -3,6 +3,10 @@ from gearsclient import log, hashtag, execute, atomic
 
 counter = 0
 
+def testVersionRuntime(self):
+    import gearsclient as gears_pkg
+    self.assertNotEqual("",gears_pkg.__version__)
+
 def getGB(env, reader='KeysReader'):
     return GRB(reader, r=env.getConnection(), addClientToRequirements=False) 
 
