@@ -119,12 +119,7 @@ commands:
 
 jobs:
   build:
-    parameters:
-      python_version:
-        type: string
-        default: "latest"
     docker:
-      - image: circleci/python:<<parameters.python_version>>
       - image: redislabs/redisgears:edge
 
     steps:
@@ -134,11 +129,7 @@ jobs:
           destination: test-reports
 
   nightly:
-    parameters:
-      python_version:
-        type: string
     docker:
-      - image: circleci/python:<<parameters.python_version>>
       - image: redislabs/redisgears:edge
     steps:
       - build_and_test
@@ -158,23 +149,12 @@ on-master: &on-master
       only:
         - master
 
-python-versions: &python-versions
-  matrix:
-    parameters:
-      python_version:
-        - "3.6.9"
-        - "3.7.9"
-        - "3.8.9"
-        - "3.9.4"
-        - "latest"
-
 workflows:
   version: 2
   commit:
     jobs:
       - build:
           <<: *on-any-branch
-          <<: *python-versions
 
   nightly:
     triggers:
