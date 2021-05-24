@@ -109,7 +109,7 @@ commands:
       - run:
           name: run tests
           command:
-            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m tox -e ci_tests
+            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m tox -e tests
 
       - save_cache:
           paths:
