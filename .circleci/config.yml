@@ -101,11 +101,11 @@ commands:
           command: |
             /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m poetry build
 
-      - run:
-          name: lint
-          command: |
-            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m tox -e linters
-
+#      - run:
+#          name: lint
+#          command: |
+#            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m tox -e linters
+#
       - run:
           name: run tests
           command:
