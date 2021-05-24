@@ -94,22 +94,22 @@ commands:
       - run:
           name: install tox dependencies
           command: |
-            pip install --user --quiet -r .circleci/circle_requirements.txt
+            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m pip install -r .circleci/circle_requirements.txt
 
       - run:
           name: build sdist and wheels
           command: |
-            poetry build
+            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m poetry build
 
-#      - run:
-#          name: lint
-#          command: |
-#            tox -e linters
-#
+      - run:
+          name: lint
+          command: |
+            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m tox -e linters
+
       - run:
           name: run tests
           command:
-            tox -e ci_tests
+            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m tox -e ci_tests
 
       - save_cache:
           paths:

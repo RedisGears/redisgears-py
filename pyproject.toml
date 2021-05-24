@@ -24,6 +24,7 @@ keywords = ["Redis JSON Extension"]
 python = "^3.6"
 redis = "^3.5.3"
 six = "^1.16.0"
+cloudpickle = "^1.6.0"
 
 
 [tool.poetry.urls]
@@ -37,6 +38,8 @@ tox = "^3.23.1"
 tox-poetry = "^0.3.0"
 bandit = "^1.7.0"
 vulture = "^2.3"
+distro = "^1.5.0"
+rltest = {git = "https://github.com/RedisLabsModules/RLTest.git", rev = "master"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
