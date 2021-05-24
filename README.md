@@ -4,6 +4,7 @@
 [![GitHub issues](https://img.shields.io/github/release/RedisGears/redisgears-py.svg)](https://github.com/RedisGears/redisgears-py/releases/latest)
 [![Codecov](https://codecov.io/gh/RedisGears/redisgears-py/branch/master/graph/badge.svg)](https://codecov.io/gh/RedisGears/redisgears-py)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/RedisGears/redisgears-py.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/RedisGears/redisgears-py/context:python)
+[![Known Vulnerabilities](https://snyk.io/test/github/RedisJSON/redisjson-py/badge.svg?targetFile=pyproject.toml)](https://snyk.io/test/github/RedisJSON/redisjson-py?targetFile=pyproject.toml)
 
 # redisgears-py
 [![Forum](https://img.shields.io/badge/Forum-RedisGears-blue)](https://forum.redislabs.com/c/modules/redisgears)
@@ -39,3 +40,16 @@ for r in res[0]:
 pip install git+https://github.com/RedisGears/redisgears-py.git
 ```
 Notice that the library also need to be installed in RedisGears virtual env.
+
+## Developing
+
+1. Create a virtualenv to manage your python dependencies, and ensure it's active.
+   ```virtualenv -v venv```
+2. Install [pypoetry](https://python-poetry.org/) to manage your dependencies.
+   ```pip install --user poetry```
+3. Install dependencies.
+   ```poetry install```
+
+[tox](https://tox.readthedocs.io/en/latest/) runs all tests as its default target. Running *tox* by itself will run unit tests. Ensure you have a running redis, with the module loaded.
+
+
