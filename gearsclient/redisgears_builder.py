@@ -1,6 +1,5 @@
 import redis
 import cloudpickle
-import pickle
 
 class GearsRemoteLocalGroupByStep():
     def __init__(self, extractor, reducer):
@@ -332,7 +331,6 @@ class atomic:
     def __init__(self):
         from redisgears import atomicCtx as redisAtomic
         self.atomic = redisAtomic()
-        pass
 
     def __enter__(self):
         self.atomic.__enter__()
