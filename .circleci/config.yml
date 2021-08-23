@@ -99,6 +99,7 @@ commands:
       - run:
           name: build sdist and wheels
           command: |
+            ln -s /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 /usr/bin/python
             /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m poetry build
 
 #      - run:
