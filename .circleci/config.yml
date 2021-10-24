@@ -99,6 +99,8 @@ commands:
       - run:
           name: build sdist and wheels
           command: |
+            # https://github.com/python-poetry/poetry/issues/4210
+            /var/opt/redislabs/modules/rg/ptyon3_99.99.99/bin/python3 -m poetry config experimental.new-installer false
             /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m poetry build
 
 #      - run:
