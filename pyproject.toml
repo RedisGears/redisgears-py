@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gearsclient"
-version = "0.1"
+version = "1.0.2"
 description = "RedisGears Python Client"
 authors = ["RedisLabs <oss@redislabs.com>"]
 license = "BSD-3-Clause"
