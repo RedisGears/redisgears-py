@@ -2,7 +2,7 @@
 name = "gearsclient"
 version = "1.0.2"
 description = "RedisGears Python Client"
-authors = ["Redis <oss@.com>"]
+authors = ["Redis <oss@redis.com>"]
 license = "BSD-3-Clause"
 readme = "README.md"
 
