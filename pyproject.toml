@@ -20,7 +20,7 @@ keywords = ["Redis JSON Extension"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
-redis = "^4.1.4"
+redis = "^4.2.0"
 six = "^1.16.0"
 cloudpickle = "^1.6.0"
 
