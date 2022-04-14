@@ -7,7 +7,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/RedisJSON/redisjson-py/badge.svg?targetFile=pyproject.toml)](https://snyk.io/test/github/RedisJSON/redisjson-py?targetFile=pyproject.toml)
 
 # redisgears-py
-[![Forum](https://img.shields.io/badge/Forum-RedisGears-blue)](https://forum.redislabs.com/c/modules/redisgears)
+[![Forum](https://img.shields.io/badge/Forum-RedisGears-blue)](https://forum.redis.com/c/modules/redisgears)
 [![Discord](https://img.shields.io/discord/697882427875393627?style=flat-square)](https://discord.gg/6yaVTtp)
 
 [RedisGears](http://redisgears.io) python client (support python3 only!)
