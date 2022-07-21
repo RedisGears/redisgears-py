@@ -110,7 +110,7 @@ commands:
 jobs:
   build:
     docker:
-      - image: redislabs/redisgears:edge
+      - image: redislabs/redisgears:1.2.5
 
     steps:
       - build_and_test
@@ -120,7 +120,7 @@ jobs:
 
   nightly:
     docker:
-      - image: redislabs/redisgears:edge
+      - image: redislabs/redisgears:1.2.5
     steps:
       - build_and_test
       - dockerize
