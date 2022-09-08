@@ -12,9 +12,6 @@ classifiers = [
     'Intended Audience :: Developers',
     'Programming Language :: Python :: 3.6',
     'Programming Language :: Python :: 3.7',
-    'Programming Language :: Python :: 3.8',
-    'Programming Language :: Python :: 3.9',
-    'Programming Language :: Python :: 3.10',
     'License :: OSI Approved :: BSD License',
     'Operating System :: OS Independent',
     'Development Status :: 5 - Production/Stable'
@@ -22,7 +19,7 @@ classifiers = [
 keywords = ["Redis JSON Extension"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6, <3.8"
 redis = "3.5.3"
 six = "^1.16.0"
 cloudpickle = "^1.6.0"
