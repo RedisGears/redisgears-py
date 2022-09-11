@@ -4,7 +4,7 @@
 [![GitHub issues](https://img.shields.io/github/release/RedisGears/redisgears-py.svg)](https://github.com/RedisGears/redisgears-py/releases/latest)
 [![Codecov](https://codecov.io/gh/RedisGears/redisgears-py/branch/master/graph/badge.svg)](https://codecov.io/gh/RedisGears/redisgears-py)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/RedisGears/redisgears-py.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/RedisGears/redisgears-py/context:python)
-[![Known Vulnerabilities](https://snyk.io/test/github/RedisJSON/redisjson-py/badge.svg?targetFile=pyproject.toml)](https://snyk.io/test/github/RedisJSON/redisjson-py?targetFile=pyproject.toml)
+[![Known Vulnerabilities](https://snyk.io/test/github/RedisGears/redisgears-py/badge.svg?targetFile=pyproject.toml)](https://snyk.io/test/github/RedisGears/redisgears-pytargetFile=pyproject.toml)
 
 # redisgears-py
 [![Forum](https://img.shields.io/badge/Forum-RedisGears-blue)](https://forum.redis.com/c/modules/redisgears)
