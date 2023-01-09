@@ -58,13 +58,13 @@ commands:
 #      - checkout
 #      - run:
 #          name: install_redisgears_py_to_RedisGears_virtual_env
-#          command: /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 setup.py install
+#          command: /var/opt/redislabs/modules/rg/python3_1.2.5/bin/python3 setup.py install
 #      - run:
 #          name: install RLTest
-#          command: /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m pip install git+https://github.com/Grokzen/redis-py-cluster.git@master git+https://github.com/RedisLabsModules/RLTest.git
+#          command: /var/opt/redislabs/modules/rg/python3_1.2.5/bin/python3 -m pip install git+https://github.com/Grokzen/redis-py-cluster.git@master git+https://github.com/RedisLabsModules/RLTest.git
 #      - run:
 #          name: run_tests
-#          command: /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m RLTest --module ../redisgears.so --module-args "Plugin /var/opt/redislabs/modules/rg/plugin/gears_python.so"
+#          command: /var/opt/redislabs/modules/rg/python3_1.2.5/bin/python3 -m RLTest --module ../redisgears.so --module-args "Plugin /var/opt/redislabs/modules/rg/plugin/gears_python.so"
 
 #workflows:
 #  version: 2
@@ -89,28 +89,28 @@ commands:
       - run:
           name: install tox dependencies
           command: |
-            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m pip install --upgrade pip virtualenv
-            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m pip install -r .circleci/circle_requirements.txt
+            /var/opt/redislabs/modules/rg/python3_1.2.5/bin/python3 -m pip install --upgrade pip virtualenv setuptools
+            /var/opt/redislabs/modules/rg/python3_1.2.5/bin/python3 -m pip install -r .circleci/circle_requirements.txt
 
       - run:
           name: build sdist and wheels
           command: |
-            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m poetry build
+            /var/opt/redislabs/modules/rg/python3_1.2.5/bin/python3 -m poetry build
 
 #      - run:
 #          name: lint
 #          command: |
-#            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m tox -e linters
+#            /var/opt/redislabs/modules/rg/python3_1.2.5/bin/python3 -m tox -e linters
 #
       - run:
           name: run tests
           command:
-            /var/opt/redislabs/modules/rg/python3_99.99.99/bin/python3 -m tox -e tests
+            /var/opt/redislabs/modules/rg/python3_1.2.5/bin/python3 -m tox -e tests
 
 jobs:
   build:
     docker:
-      - image: redislabs/redisgears:edge
+      - image: redislabs/redisgears:1.2.5
 
     steps:
       - build_and_test
@@ -120,7 +120,7 @@ jobs:
 
   nightly:
     docker:
-      - image: redislabs/redisgears:edge
+      - image: redislabs/redisgears:1.2.5
     steps:
       - build_and_test
       - dockerize

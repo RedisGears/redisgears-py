@@ -287,7 +287,7 @@ class GearsRemoteBuilder():
 
     def run(self, arg=None, collect=True, **kargs):
         self.map(lambda x: cloudpickle.dumps(x))
-        self.pipe.run(arg, False, collect)
+        self.pipe.run(arg, False, collect, **kargs)
         selfBytes = cloudpickle.dumps(self.pipe)
         serverCode = '''
 import cloudpickle
